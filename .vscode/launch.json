@@ -1,0 +1,51 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Server",
+            "request": "launch",
+            "mainClass": "server.Server",
+            "projectName": "IPL_Database_Management_System_28cc637a"
+        },
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "clients.Main",
+            "projectName": "IPL_Database_Management_System_28cc637a",
+            "vmArgs": "--module-path /opt/openjfx-23.0.1_linux-x64_bin-sdk/javafx-sdk-23.0.1/lib --add-modules javafx.fxml,javafx.controls,javafx.graphics"
+        },
+        {
+            "type": "java",
+            "name": "MenuApplication",
+            "request": "launch",
+            "mainClass": "menu.MenuApplication",
+            "projectName": "IPL_Database_Management_System_28cc637a",
+            "vmArgs": "--module-path /opt/openjfx-23.0.1_linux-x64_bin-sdk/javafx-sdk-23.0.1/lib --add-modules javafx.fxml,javafx.controls,javafx.graphics"
+        },
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "clients.Main",
+            "projectName": "2205094_869b4e0d",
+            "vmArgs": "--module-path /opt/openjfx-23.0.1_linux-x64_bin-sdk/javafx-sdk-23.0.1/lib --add-modules javafx.fxml,javafx.controls,javafx.graphics"
+        },
+        {
+            "type": "java",
+            "name": "Server",
+            "request": "launch",
+            "mainClass": "server.Server",
+            "projectName": "2205094_869b4e0d"
+        },
+        {
+            "type": "java",
+            "name": "MenuApplication",
+            "request": "launch",
+            "mainClass": "menu.MenuApplication",
+            "projectName": "2205094_869b4e0d",
+            "vmArgs": "--module-path /opt/openjfx-23.0.1_linux-x64_bin-sdk/javafx-sdk-23.0.1/lib --add-modules javafx.fxml,javafx.controls,javafx.graphics"
+        }
+    ]
+      
+}

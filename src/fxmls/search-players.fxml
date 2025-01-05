@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"  prefHeight="600.0" prefWidth="650.0" stylesheets="@../styles/glowingButton.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="menu.SearchPlayers">
+   <children>
+      <Label StyleClass="label" alignment="CENTER" contentDisplay="CENTER" layoutX="198.0" layoutY="49.0" prefHeight="64.0" prefWidth="650.0" text="Player searching Options" textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0">    
+      </Label>
+      <VBox StyleClass="container" alignment="CENTER" layoutX="145.0" layoutY="44.0" prefHeight="394.0" prefWidth="300.0" spacing="30.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="80.0">
+      <Button StyleClass="button" mnemonicParsing="false" onAction="#searchByName" text="By Player Name" />
+      <Button StyleClass="button" mnemonicParsing="false" onAction="#searchByPosition" text="By Position" />
+      <Button StyleClass="button" mnemonicParsing="false" onAction="#searchByCulbAndCountry" text="By Club and Country" />
+      <Button StyleClass="button" mnemonicParsing="false" onAction="#bySalaryRange" text="By Salary Range" />
+      <Button StyleClass="button" mnemonicParsing="false" onAction="#countryWisePlayersCount" text="Country wise Player count" />
+      <Button StyleClass="button" mnemonicParsing="false" onAction="#backToMain" text="Back to Main" />
+      </VBox>
+   </children>
+</AnchorPane>

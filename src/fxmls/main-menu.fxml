@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="650.0" stylesheets="@../styles/glowingButton.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="menu.MainMenu">
+   <children>
+      <VBox alignment="CENTER"  layoutX="145.0" layoutY="44.0" prefHeight="394.0" prefWidth="300.0" spacing="30.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label alignment="CENTER" prefHeight="59.0" prefWidth="228.0" styleClass="" text="Main Menu">
+               
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </Label>
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#searchPlayers" styleClass="button" text="Search Players" textAlignment="CENTER">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#searchClubs" styleClass="button" text="Search Clubs" />
+            <Button mnemonicParsing="false" onAction="#addPlayer" styleClass="button" text="Add Players" />
+            <Button mnemonicParsing="false" onAction="#exitSystem" styleClass="button" text="Exit System" />
+         </children>
+      </VBox>
+      <Label alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="59.0" prefWidth="228.0" styleClass="label" text="&quot;IPL Database Management System&quot;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         
+      </Label>
+   </children>
+</AnchorPane>

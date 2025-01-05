@@ -1,0 +1,10 @@
+Mumbai Indians,a
+Punjab Kings,a
+Sunrisers Hyderabad,a
+Gujarat Titans,a
+Delhi Capitals,a
+Lucknow Super Giants,a
+Rajasthan Royals,a
+Royal Challengers Bangalore,a
+Kolkata Knight Riders,a
+Chennai Super Kings,a

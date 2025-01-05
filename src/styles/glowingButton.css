@@ -1,0 +1,81 @@
+@font-face {
+    font-family: 'Kaushan Script';
+    src: url('../fonts/KaushanScript-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('../fonts/Poppins-Regular.ttf') format('truetype');
+}
+
+.root {
+    /* -fx-background-color: linear-gradient( to right, rgba(135,206,235,1) 7.3%, rgba(255,154,139,1) 40.3%, rgba(255,195,160,1) 57.9%, rgba(255,215,0,1) 93.5% ); */
+
+    /* -fx-background-color: radial-gradient(
+        focus-angle 0deg,
+        focus-distance 0%,
+        center 10% 20%,
+        radius 341px,
+        rgba(132,94,194,1) 0%,
+        rgba(196,243,251,1) 90%
+    ); */
+    -fx-background-color: linear-gradient(
+        from 0% 50% to 100% 55%,
+        rgba(6,67,105,1) 6.6%,
+        rgba(255,208,4,1) 100.4%
+    );
+}
+
+.container {
+    -fx-alignment: center; 
+}
+
+.label {
+    -fx-font-size: 26;
+    -fx-font-weight: bold;
+    -fx-font-family: 'Kaushan Script';
+}
+.labelX {
+    -fx-font-size: 18;
+    -fx-font-weight: bold;
+    -fx-font-family: 'Kaushan Script';
+    -fx-text-fill:rgb(10, 188, 247);
+}
+.label2{
+    -fx-font-size:16;
+    -fx-font-family: 'Poppins';
+    -fx-text-fill: white;
+}
+.inputfld{
+    -fx-border-color: #400485;
+    -fx-border-radius: 7;
+    -fx-padding: 5 10;
+    -fx-font-family: 'Poppins';
+    -fx-background-radius: 7;
+    -fx-text-fill: rgb(25, 192, 178);
+    -fx-alignment: center;
+}
+.button {
+    -fx-background-color: linear-gradient(to right, #603813 0%, #b29f94 51%, #603813 100%);
+    -fx-background-size: 200% auto;
+    -fx-text-fill: white;
+    -fx-background-radius: 30;
+    -fx-padding: 10 20;
+    -fx-font-family: 'Poppins';
+    -fx-border-radius: 30;
+    -fx-border-color: rgb(3, 244, 248);
+    -fx-border-width: 2;
+    -fx-font-size: 16;
+    -fx-effect: dropshadow(gaussian, #eee, 20, 0.5, 0, 0); /* Correct shadow effect */
+    -fx-transition: all 0.5s ease;
+    -fx-cursor: hand;
+}
+
+
+
+.button:hover {
+    -fx-background-position: right center; 
+    -fx-background-radius: 30;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(gaussian, #b7b5a4, 30, 0.7, 0, 0); 
+}

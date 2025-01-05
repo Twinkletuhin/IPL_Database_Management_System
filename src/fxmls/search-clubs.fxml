@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="650.0" stylesheets="@../styles/glowingButton.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="menu.SearchClubs">
+    <children>
+        <!-- Title Label -->
+        <Label StyleClass="label" alignment="CENTER" contentDisplay="CENTER" prefHeight="61.0" prefWidth="650.0"  text="Club Search Options" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0">
+         </Label>
+
+        <!-- Button: Max Salary -->
+        <VBox StyleClass="container" alignment="CENTER" layoutX="145.0" layoutY="44.0" prefHeight="394.0" prefWidth="300.0" spacing="30.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="0.0">
+
+        <Button mnemonicParsing="false" onAction="#maxSalary" text="Player(s) with the Maximum Salary" />
+
+        <!-- Button: Max Age -->
+        <Button mnemonicParsing="false" onAction="#maxAge" text="Player(s) with the Maximum Age" />
+
+        <!-- Button: Max Height -->
+        <Button mnemonicParsing="false" onAction="#maxHeight" text="Player(s) with the Maximum Height" />
+
+        <!-- Button: Total Yearly Salary -->
+        <Button mnemonicParsing="false" onAction="#totalYearlySalary" text="Total Yearly Salary of a Club" />
+
+        <!-- Button: Back to Main -->
+        <Button mnemonicParsing="false" onAction="#backToMain" prefWidth="150.0" text="Back to Main" />
+        </VBox>
+    </children>
+</AnchorPane>

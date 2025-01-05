@@ -1,0 +1,97 @@
+.root {
+    /* -fx-background-color: linear-gradient( to right, rgba(135,206,235,1) 7.3%, rgba(255,154,139,1) 40.3%, rgba(255,195,160,1) 57.9%, rgba(255,215,0,1) 93.5% ); */
+
+    /* -fx-background-color: radial-gradient(
+        focus-angle 0deg,
+        focus-distance 0%,
+        center 10% 20%,
+        radius 341px,
+        rgba(132,94,194,1) 0%,
+        rgba(196,243,251,1) 90%
+    ); */
+    -fx-background-color: linear-gradient(
+        from 0% 50% to 100% 55%,
+        rgba(6,67,105,1) 6.6%,
+        rgba(255,208,4,1) 100.4%
+    );
+}
+.table-view {
+    -fx-background-color: transparent;/*linear-gradient(rgb(172, 205, 42) 30%, rgb(40, 123, 144) 80%);*/
+    -fx-background-radius: 10px;
+    -fx-border-color: black;
+    -fx-border-width: 1px;
+    -fx-border-radius: 10px;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: transparent;
+    -fx-border-width: 1px;
+    -fx-border-radius: 10px;
+    -fx-border-color: black;
+    -fx-padding: 5px; 
+}
+
+
+.table-view .column-header {
+    -fx-background-color: rgb(221, 162, 90);/*linear-gradient(to bottom right ,#2d44b4 40%,#256b51 80%);*/
+}
+/* First column header (left-side rounded corner) */
+.table-view .column-header.first-column-header {
+    -fx-background-radius: 13px 0 0 13px; /* Top-left and bottom-left corners rounded */
+    -fx-border-radius: 13px 0 0 13px;
+}
+
+/* Last column header (right-side rounded corner) */
+.table-view .column-header.last-column-header {
+    -fx-background-radius: 0 13px 13px 0; /* Top-right and bottom-right corners rounded */
+    -fx-border-radius: 0 13px 13px 0;
+}
+.table-view .column-header .label {
+    -fx-text-fill: white;
+}
+/*select each row*/
+.table-row-cell {
+    -fx-background-color:transparent;/* rgb(221, 162, 90);/*linear-gradient(to bottom right ,#2d44b4 40%,#256b51 80%); /*linear-gradient(#FBEB7E 0%,#F7CE68 100%);*/
+    -fx-border-width:1px;
+    -fx-border-color: rgb(165, 138, 30);
+    -fx-border-radius: 10px;
+    -fx-border-insets: 2px; 
+    -fx-background-insets:2px;
+    -fx-background-radius:10px;
+}
+/*select each cell*/
+.table-view .table-cell {
+    -fx-text-fill: white;
+}
+.button2 {
+    -fx-background-color: linear-gradient(to right, #603813 0%, #b29f94 51%, #603813 100%);
+    -fx-background-size: 200% auto;
+    -fx-text-fill: white;
+    -fx-background-radius: 30;
+    -fx-padding: 8 15;
+    -fx-font-family: 'Poppins';
+    -fx-border-radius: 20;
+    -fx-border-color: rgb(3, 244, 248);
+    -fx-border-width: 2;
+    -fx-font-size: 15;
+    -fx-effect: dropshadow(gaussian, #eee, 20, 0.5, 0, 0); 
+    -fx-transition: all 0.5s ease;
+    -fx-cursor: hand;
+}
+.button2:hover {
+    -fx-background-position: right center;
+    -fx-background-radius: 20;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(gaussian, #b7b5a4, 30, 0.7, 0, 0); 
+}
+.labelPromt {
+    -fx-font-size: 26;
+    -fx-font-weight: bold;
+    -fx-font-family: 'Kaushan Script';
+}
+.label2 {
+    -fx-font-size: 13;
+    -fx-font-family: 'Poppins';
+    -fx-text-fill: white;
+    -fx-alignment: center;
+}
