@@ -22,6 +22,7 @@ public class FileOperation {
     private ArrayList<Player> players = new ArrayList<>();
     private ArrayList<Club> clubsList = new ArrayList<>();
     private HashMap<String, String> countryShortName = new HashMap<>();
+    private ArrayList<Player>stockList=new ArrayList<>();
     private ConcurrentHashMap<String, String> clubCridentials = new ConcurrentHashMap<>();
 
     public FileOperation() {
@@ -74,6 +75,37 @@ public class FileOperation {
 
         return (ArrayList<Player>) players;
     }
+    public ArrayList<Player> loadStockList() throws IOException {
+        BufferedReader fReader = file("stockList.txt");
+        //ArrayList<Player>tempStockList=new ArrayList<>();
+        String line;
+        try {
+
+            while ((line = fReader.readLine()) != null) {
+                String[] fields = line.split(",");
+                // Name,Country,Age,Height,Club,Position,Number,WeeklySalary
+                Player px = new Player(fields[0], fields[1], Integer.parseInt(fields[2]), Double.parseDouble(fields[3]),
+                        fields[4], fields[5], fields[6].isEmpty() ? null : Integer.parseInt(fields[6]),
+                        Integer.parseInt(fields[7]));
+                URL flagUrl = FileOperation.class
+                        .getResource("/flags/" + px.getCountry().toLowerCase().trim() + ".png");
+                if (flagUrl != null) {
+                    px.setCountryFlagPath(flagUrl.toExternalForm());
+
+                } else {
+                    px.setCountryFlagPath(FileOperation.class.getResource("flags/bangladesh.png").toExternalForm());
+                }
+
+                //tempStockList.add(px);
+                stockList.add(px);
+
+            }
+        } finally {
+            fReader.close();
+        }
+
+        return (ArrayList<Player>)stockList;
+    }
 
     public ArrayList<Club> loadClubsList() throws IOException {
         for (Player p : players) {
@@ -84,6 +116,7 @@ public class FileOperation {
 
             } else {
                 Club club = new Club(p.getClub());
+                club.setName(p.getClub());
                 club.addToClub(p);
                 // club.addToStock(null);
                 clubsList.add(club);
@@ -146,6 +179,35 @@ public class FileOperation {
             }
         } catch (IOException e) {
             System.out.println("Error in writing player data");
+        } finally {
+            fWriter.close();
+        }
+
+    }
+    public void printList(ArrayList<Player>px) {
+        for(Player p:px){
+            System.out.println(p);
+        }
+    }
+    public void closeStockList(ArrayList<Player>finalStock) throws IOException {
+         System.out.println("stock list closed");
+       // printList(finalStock);
+        BufferedWriter fWriter = file("stockList.txt", false);
+        try {
+
+           // for (Club club : clubsList) {
+               // if(club.getStockList()!=null)
+                for (Player player : finalStock) {
+                    fWriter.write(
+                            player.getName() + "," + player.getCountry() + "," + player.getAge() + ","
+                                    + player.getHeight()
+                                    + "," + player.getClub() + "," + player.getPosition() + ","
+                                    + (player.getNumber() != null ? player.getNumber() : "") + ","
+                                    + player.getWeeklySalary() + "\n");
+              //  }
+            }
+        } catch (IOException e) {
+            System.out.println("Error in writing player data in stock.txt");
         } finally {
             fWriter.close();
         }

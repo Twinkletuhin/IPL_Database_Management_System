@@ -15,10 +15,12 @@ public class ReadThreadServer implements Runnable {
     private final Thread thr;
     private final SocketWrapper socketWrapper;
     private ArrayList<Club> clubsList;
+    private ArrayList<Player>stockList;
     private ConcurrentHashMap<String, SocketWrapper> clubMap;
     private ConcurrentHashMap<String, String> clubCridentials;
+    
 
-    public ReadThreadServer(ArrayList<Club> clubsList, ConcurrentHashMap<String, SocketWrapper> clubMap,
+    public ReadThreadServer(ArrayList<Club> clubsList,ArrayList<Player>stockList, ConcurrentHashMap<String, SocketWrapper> clubMap,
             ConcurrentHashMap<String, String> clubCridentials, SocketWrapper socketWrapper) {
         this.clubsList = clubsList;
         // System.out.println("Clubs list size in readthread server: " +
@@ -26,6 +28,7 @@ public class ReadThreadServer implements Runnable {
         this.clubMap = clubMap;
         this.clubCridentials = clubCridentials;
         this.socketWrapper = socketWrapper;
+        this.stockList=stockList;
         this.thr = new Thread(this);
         thr.start();
     }
@@ -69,7 +72,7 @@ public class ReadThreadServer implements Runnable {
                         }
                     } else if (o instanceof SellRequest) {
                         SellRequest sellRequest = (SellRequest) o;
-                        System.out.println("i got sell request from: " + sellRequest.getClubName());
+                        System.out.println("Sell request of  "+sellRequest.getPlayer().getName()+"from" + sellRequest.getClubName());
                         System.out.println(sellRequest.getPlayer());
                         {
                             for (Club eachClub : clubsList) {
@@ -82,7 +85,7 @@ public class ReadThreadServer implements Runnable {
                                     } else {
                                         System.out.println("Failed to remove " + sellRequest.getPlayer().getName());
                                     }
-                                    printList(eachClub.getPlayersList());
+                                   // printList(eachClub.getPlayersList());
                                 } else {
                                     // Add the player to the stock list of other clubs
                                     // System.out.println("Adding to stock list of " + eachClub.getName());
@@ -115,7 +118,9 @@ public class ReadThreadServer implements Runnable {
                     } else if (o instanceof BuyRequest) {
                         BuyRequest buyRequest = (BuyRequest) o;
                         String buyer = buyRequest.getBuyer();
-                        System.out.println("buyer is: " + buyer);
+                        System.out.println("Removed "+buyRequest.getPlayer()+" from stock lists");
+                        stockList.remove(buyRequest.getPlayer());
+                        System.out.println(buyer+" bought "+buyRequest.getPlayer().getName());
                         // updating the database of the server
 
                         for (Club eachClub : clubsList) {
@@ -143,7 +148,7 @@ public class ReadThreadServer implements Runnable {
                                 } else {
                                     System.out.println("Failed to add " + buyRequest.getPlayer().getName());
                                 }
-                                printList(eachClub.getPlayersList());
+                                //printList(eachClub.getPlayersList());
                             }
                             {
 
@@ -159,9 +164,9 @@ public class ReadThreadServer implements Runnable {
                         // writing the updated club to the client
                         for (Club club : clubsList) {
                             System.out.println("after buy Stock list of " + club.getName());
-                            printList(club.getStockList());
+                            //printList(club.getStockList());
                             System.out.println("after buy players list of " + club.getName());
-                            printList(club.getPlayersList());
+                           // printList(club.getPlayersList());
                             SocketWrapper sWrapper = clubMap.get(club.getName());
                             if (sWrapper != null) {
                                 sWrapper.write("updateStockListAfterBuy");

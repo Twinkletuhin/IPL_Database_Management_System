@@ -7,12 +7,14 @@ import java.util.Scanner;
 import java.util.concurrent.ConcurrentHashMap;
 
 import menu.Club;
+import menu.Player;
 import util.FileOperation;
 import util.SocketWrapper;
 
 public class Server {
     private ServerSocket serverSocket;
     private ArrayList<Club> clubsList = new ArrayList<>();
+    private ArrayList<Player>stockList=new ArrayList<>();
     private ConcurrentHashMap<String, String> clubCridentials = new ConcurrentHashMap<>();
     private ConcurrentHashMap<String, SocketWrapper> clubMap = new ConcurrentHashMap<>();
     private FileOperation fileOperation;
@@ -33,12 +35,27 @@ public class Server {
         try {
             clubsList = fileOperation.loadClubsList();
             clubCridentials = fileOperation.loadClubCridentials();
+            stockList=fileOperation.loadStockList(); 
+           // printList(stockList);
+            setStockList();
             System.out.println("Database loaded successfully.");
         } catch (Exception e) {
             System.out.println("Error loading database: " + e.getMessage());
         }
     }
+    private void setStockList(){
+        
+        for(Club clb:clubsList){
+            for(Player p:stockList){
+                if(clb.getName().equalsIgnoreCase(p.getClub())==false){
+                    clb.getStockList().add(p);
+                }
 
+            }
+        }
+
+    }
+    
     public void start() {
         try {
             while (running) {
@@ -54,13 +71,35 @@ public class Server {
 
     private void serve(Socket clientSocket) throws IOException {
         SocketWrapper socketWrapper = new SocketWrapper(clientSocket);
-        new ReadThreadServer(clubsList, clubMap, clubCridentials, socketWrapper);
+        new ReadThreadServer(clubsList,stockList, clubMap, clubCridentials, socketWrapper);
+    }
+    private void takeStockBeforeClose(){
+        for(Club clb:clubsList){
+            ArrayList<Player>tempStock=clb.getStockList();
+            if(tempStock!=null){
+                for(Player p:tempStock){
+                    if(exitsInStock(p.getName())==false){
+                        stockList.add(p);
+                    }
+                }
+            }
+        }
+    }
+    private boolean exitsInStock(String name){
+        for(Player p:stockList){
+            if(p.getName().equalsIgnoreCase(name)){
+                return true;
+            }
+        }
+        return false;
     }
 
     public void saveDB() {
         try {
             fileOperation.closeClubsList(clubsList);
             fileOperation.closeClubCridentials(clubCridentials);
+            takeStockBeforeClose();
+            fileOperation.closeStockList(stockList);
         } catch (IOException e) {
             System.out.println("Error saving database: " + e.getMessage());
         }
@@ -77,7 +116,11 @@ public class Server {
             System.out.println("Error stopping server: " + e.getMessage());
         }
     }
-
+    public void printList(ArrayList<Player>px) {
+        for(Player p:px){
+            System.out.println(p);
+        }
+    }
     public static void main(String[] args) {
         Server server = new Server(33333);
         new Thread(() -> {
